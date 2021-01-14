@@ -46,23 +46,40 @@ public class Sim {
                     cont++;
                 }
             }
-            if(cont==0){
-                throw new Exception("\n-------------------------\n"+destinatario+" non presente nelle telefonate\n-------------------------\n");
+            if (cont == 0) {
+                throw new Exception("\n-------------------------\n" + destinatario + " non presente nelle telefonate\n-------------------------\n");
             }
-            System.out.println("Sono state fatte "+cont+" telefonate al contatto "+destinatario);
+            System.out.println("Sono state fatte " + cont + " telefonate al contatto " + destinatario);
         } catch (Exception e) {
             System.out.println(e);
         }
     }
-    
-    public void stampaDati(){
-        String s ="";
-        s+="Numero: "+numeroTelefono+"\nCredito: "+credito+"\n";
+
+    public void numeroTelefonateA(String destinatario) {
+        try {
+            if(destinatario=="") throw new Exception("Non è stato inserito un destinatario da cercare");
+            int cont = 0;
+            for (Telefonata telefonata : telefonate) {
+                if (telefonata.getDestinatario().equals(destinatario)) {
+                    cont++;
+                }
+            }
+            if(cont==0) throw new Exception("Non sono state effettuate telefonate a "+destinatario);
+            else
+            System.out.println("Sono state fatte: " + cont + " telefonate a " + destinatario + "\n");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+    }
+
+    public void stampaDati() {
+        String s = "";
+        s += "Numero: " + numeroTelefono + "\nCredito: " + credito + "\n";
         for (Telefonata telefonata : telefonate) {
-            s+=telefonata.getData();
+            s += telefonata.getData();
         }
         System.out.println(s);
     }
-
 
 }
