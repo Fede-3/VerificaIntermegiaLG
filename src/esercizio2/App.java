@@ -10,7 +10,22 @@ package esercizio2;
  * @author Fedep
  */
 public class App {
+
     public static void main(String[] args) {
-        
+        try {
+            Sim s1 = new Sim("12345678", 5);
+            s1.aggiungiTelefonata("pluto", 2);
+            s1.aggiungiTelefonata("pippo", 5);
+            s1.aggiungiTelefonata("topolino", 20);
+            s1.stampaDati();
+            s1.chimateA("");
+            s1.chimateA("gianni");
+            s1.chimateA("pippo");
+            
+        }
+        catch (Exception e) {
+            System.out.println("C'è stato un errore nel main");
+        }
+
     }
 }
