@@ -38,7 +38,7 @@ public class Sim {
     public void chimateA(String destinatario) {
         try {
             int cont = 0;
-            if (destinatario == null) {
+            if (destinatario == "") {
                 throw new Exception("\n-------------------------\ndestinatario non può essere vuoto\n-------------------------\n");
             }
             for (Telefonata telefonata : telefonate) {
@@ -47,7 +47,7 @@ public class Sim {
                 }
             }
             if(cont==0){
-                throw new Exception(destinatario+" non presente nelle telefonate");
+                throw new Exception("\n-------------------------\n"+destinatario+" non presente nelle telefonate\n-------------------------\n");
             }
             System.out.println("Sono state fatte "+cont+" telefonate al contatto "+destinatario);
         } catch (Exception e) {

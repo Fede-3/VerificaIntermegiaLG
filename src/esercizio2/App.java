@@ -22,6 +22,7 @@ public class App {
             s1.chimateA("gianni");
             s1.chimateA("pippo");
             
+            
         }
         catch (Exception e) {
             System.out.println("C'è stato un errore nel main");
