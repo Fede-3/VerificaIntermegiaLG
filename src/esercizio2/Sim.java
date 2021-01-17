@@ -68,7 +68,7 @@ public class Sim {
             else
             System.out.println("Sono state fatte: " + cont + " telefonate a " + destinatario + "\n");
         } catch (Exception e) {
-            System.out.println(e);
+            System.out.println(e.getMessage());
         }
 
     }
