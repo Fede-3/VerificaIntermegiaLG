@@ -18,9 +18,9 @@ public class App {
             s1.aggiungiTelefonata("pippo", 5);
             s1.aggiungiTelefonata("topolino", 20);
             s1.stampaDati();
-            s1.chimateA("");
-            s1.chimateA("gianni");
-            s1.chimateA("pippo");
+//            s1.chimateA("");
+//            s1.chimateA("gianni");
+//            s1.chimateA("pippo");
             System.out.println("La durata totale delle telefonate è: "+s1.durataTelefonate()+"\n");
             s1.numeroTelefonateA("pippo");
             s1.numeroTelefonateA("");

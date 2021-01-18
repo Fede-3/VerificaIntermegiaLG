@@ -35,25 +35,25 @@ public class Sim {
         return durata;
     }
 
-    public void chimateA(String destinatario) {
-        try {
-            int cont = 0;
-            if (destinatario == "") {
-                throw new Exception("\n-------------------------\ndestinatario non può essere vuoto\n-------------------------\n");
-            }
-            for (Telefonata telefonata : telefonate) {
-                if (telefonata.getDestinatario() == destinatario) {
-                    cont++;
-                }
-            }
-            if (cont == 0) {
-                throw new Exception("\n-------------------------\n" + destinatario + " non presente nelle telefonate\n-------------------------\n");
-            }
-            System.out.println("Sono state fatte " + cont + " telefonate al contatto " + destinatario);
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }
+//    public void chimateA(String destinatario) {
+//        try {
+//            int cont = 0;
+//            if (destinatario == "") {
+//                throw new Exception("\n-------------------------\ndestinatario non può essere vuoto\n-------------------------\n");
+//            }
+//            for (Telefonata telefonata : telefonate) {
+//                if (telefonata.getDestinatario() == destinatario) {
+//                    cont++;
+//                }
+//            }
+//            if (cont == 0) {
+//                throw new Exception("\n-------------------------\n" + destinatario + " non presente nelle telefonate\n-------------------------\n");
+//            }
+//            System.out.println("Sono state fatte " + cont + " telefonate al contatto " + destinatario);
+//        } catch (Exception e) {
+//            System.out.println(e);
+//        }
+//    }
 
     public void numeroTelefonateA(String destinatario) {
         try {
