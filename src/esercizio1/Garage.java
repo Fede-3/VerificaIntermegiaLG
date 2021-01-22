@@ -6,6 +6,7 @@
 package esercizio1;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -13,62 +14,64 @@ import java.util.ArrayList;
  */
 public class Garage {
 
-    ArrayList<Veicolo> garage = new ArrayList<Veicolo>();
-    int[] postiLiberi = new int[14];
+    private final List<Veicolo> garage;
 
-    void aggiungiVeicolo(Veicolo veicolo) {
-        int posto = trovaPosto();
-        if (posto != -1) {
-            System.out.println("Sto aggiungendo il veicolo:\n"+veicolo.toString());
-            
-            System.out.println("Nel primo posto libero disponibile: " + posto+"\n");
-            garage.add(posto, veicolo);
-            veicolo.setPostoOccupato(posto);
-            postiLiberi[posto] = 1;
-        } else {
-            System.out.println("Nessun posto libero!\n");
-        }
-
+    public Garage(int numeroPosti) {
+        this.garage = new ArrayList<>();
+        inizializza(numeroPosti);
     }
-    
 
-    void rimuoviVeicolo(int posto) {
-        Veicolo veicolo = null;
-
-        for (Veicolo v : garage) {
-            if (posto == v.getPostoOccupato()) {
-                veicolo = v;
-                break;
+    public void addVeicolo(Veicolo v) {
+        try {
+            if (postoLibero() == -1) {
+                throw new GarageException("Il garage risulta pieno.");
             }
+            garage.set(postoLibero(), v);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
+    }
 
-        if (veicolo != null) {
-            System.out.println("Sto rimuovendo il veicolo:\n"+veicolo.toString());
-            System.out.println("Dal posto: " + posto+"\n");
-            garage.remove(veicolo);
-            postiLiberi[posto] = 0;
-            System.out.println("Ora il posto " + posto + " è libero.\n");
-        } else {
-            System.out.println("Il posto"+posto+ "risulta già libero\n");
+    public void removeVeicolo(int posto) {
+        try {
+            posto=posto-1;
+            if (garage.get(posto) == null) {
+                throw new GarageException("Il posto risulta già vuoto");
+            }
+            if (garage.size() < posto) {
+                throw new GarageException("Il garage contiene solo " + garage.size() + " posti");
+            }
+            garage.set(posto, null);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
-
     }
 
     void stampaGarage() {
-        for (Veicolo veicolo : garage) {
-            System.out.println("Nel posto: "+veicolo.getPostoOccupato());
-            System.out.println(veicolo.toString()+"\n");
+        try {
+            for (int i=0; i<garage.size();i++) {
+                System.out.println("------------------------------------------");
+                System.out.println("Posto: " + (i+1));
+                if (garage.get(i) == null) {
+                    System.out.println("Libero");
+                } else {
+                    System.out.println(garage.get(i).toString());
+                }
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
+
     }
 
-    int trovaPosto() {
-        for (int i = 0; i <= postiLiberi.length; i++) {
-            if (postiLiberi[i] == 0) {
-                return i;
-            }
-        }
-        return -1;
+    public int postoLibero() {
+        return garage.indexOf(null);
     }
-    
+
+    private void inizializza(int numeroPosti) {
+        for (int i = 0; i < numeroPosti; i++) {
+            this.garage.add(null);
+        }
+    }
 
 }

@@ -5,27 +5,25 @@
  */
 package esercizio1;
 
-import java.util.ArrayList;
 
 /**
  *
  * @author Fedep
  */
 public class App {
-    
-    static Garage g1=new Garage();
-    
+
     public static void main(String[] args) {
-        Furgone f = new Furgone(1000, "Fiat", "1990", "2600");
-        g1.aggiungiVeicolo(f);
-        Moto m = new Moto(2, "Cagiva", "2006", "50");
-        g1.aggiungiVeicolo(m);
-        Auto a = new Auto(5, Auto.Alimentazione.Benzina, "Fiat", "2010", "1900");
-        g1.aggiungiVeicolo(a);
-        g1.rimuoviVeicolo(5);
-        g1.rimuoviVeicolo(1);
-        
-        g1.stampaGarage();
+        Garage g = new Garage(15);
+
+        g.stampaGarage();
+        g.addVeicolo(new Furgone(1000, "Fiat", "1990", "2600"));
+        g.addVeicolo(new Moto(2, "Cagiva", "2006", "50"));
+        g.addVeicolo(new Auto(5, Auto.Alimentazione.Benzina, "Fiat", "2010", "1900"));
+        g.stampaGarage();
+        g.removeVeicolo(2);
+        g.stampaGarage();
+        g.addVeicolo(new Auto(3, Auto.Alimentazione.Diesel, "Fiat", "2020", "1300"));
+        g.stampaGarage();
     }
-    
+
 }

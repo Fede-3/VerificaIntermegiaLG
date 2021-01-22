@@ -11,36 +11,16 @@ package esercizio1;
  */
 public class Veicolo {
     private String marca, anno, cilindrata;
-    private int postoOccupato;
 
     public Veicolo(String marca, String anno, String cilindrata) {
         this.marca = marca;
         this.anno = anno;
         this.cilindrata = cilindrata;
     }
-
-    public int getPostoOccupato() {
-        return postoOccupato;
-    }
-
-    public void setPostoOccupato(int postoOccupato) {
-        this.postoOccupato = postoOccupato;
-    }
-
-    
     
     @Override
     public String toString() {
         return "Marca: " + marca + ", anno: " + anno + ", cilindrata: " + cilindrata;
     }
-
-
-
-    
-
-    
-    
-    
-    
     
 }
