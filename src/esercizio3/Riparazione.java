@@ -26,6 +26,13 @@ public class Riparazione {
     public float getCosto() {
         return costo;
     }
+
+    @Override
+    public String toString() {
+        return "Riparazione{" + "descrizione=" + descrizione + ", costo=" + costo + '}';
+    }
+    
+    
     
     
 }

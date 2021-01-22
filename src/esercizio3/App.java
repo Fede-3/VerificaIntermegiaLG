@@ -5,7 +5,6 @@
  */
 package esercizio3;
 
-import java.util.ArrayList;
 
 /**
  *
@@ -13,67 +12,31 @@ import java.util.ArrayList;
  */
 public class App {
 
-    public static ArrayList<Attrezzo> inLavorazione = new ArrayList<>();
-    private static int id_ordine;
-
     public static void main(String[] args) {
-
-        for (int i = 0; i < 10; i++) {
-            inLavorazione.add(null);
-        }
-
+        
         Motozappa m = new Motozappa(2, "Cemb");
+        Decespugliatore d = new Decespugliatore(true, "Deces");
+        Tosaerba t = new Tosaerba(4, "Tos");
         
+        Officina o = new Officina(10);
 
-        inserisciLavorazione(m);
-
+        o.addLavorazione(m);
+        o.addLavorazione(d);
+        o.addLavorazione(t);
+        
+        d.getRiparazioni();
+        
+        m.AggiungiRiparazione("cinghia", (float) 50.50);
+        m.AggiungiRiparazione("testa", (float) 150.33);
+        m.AggiungiRiparazione("filo", (float) 5);
+        m.AggiungiRiparazione("altra roba", (float) 20.50);
+        o.riparazioneFinita(m);
+        
+        o.addLavorazione(m);
         m.AggiungiRiparazione("sostituito cinghia", 20);
         m.AggiungiRiparazione("sostituito testa", (float) 50.30);
-        
-        riparazioneFinita(m);
-        
-        inserisciLavorazione(m);
-        
-        m.AggiungiRiparazione("sostituito cinghia", 20);
-        m.AggiungiRiparazione("sostituito testa", (float) 50.30);
-        
-
+        m.getRiparazioni();
+        o.riparazioneFinita(m);
     }
 
-    private static void inserisciLavorazione(Attrezzo a) {
-        try {
-            if (indiceLibero() == -1) {
-                throw new Exception("Raggiunto limite lavorazioni");
-            }
-            a.setId_ordine(id_ordine++);
-            inLavorazione.add(indiceLibero(), a);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-
-    }
-
-    private static int indiceLibero() {
-        try {
-            return inLavorazione.indexOf(null);
-        } catch (Exception e) {
-            return -1;
-        }
-
-    }
-
-    private static void riparazioneFinita(Attrezzo a){
-        System.out.println("Riparazione effettuata per: "+a.getMarca()+"\ncon id ordine: "+a.getId_ordine());
-        System.out.println("Sono state effettuate le seguenti riparazioni: ");
-        for (Riparazione r: a.getRiparazioni()) {
-            System.out.println(r.getDescrizione());
-            System.out.println("-----------------------");
-        }
-        System.out.println("Il costo totale delle riparazioni è: "+a.getTot_costo());
-        
-        inLavorazione.set(inLavorazione.indexOf(a), null);
-            
-    }
-
-    
 }
